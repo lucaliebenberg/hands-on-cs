@@ -55,9 +55,9 @@ const merge = (sortedLeft, sortedRight) => {
 
   while(sortedLeft.length && sortedRight.length) {
     if (sortedLeft[0] <= sortedRight[0]) {
-      results.push(sortedLeft.shift());
+      results.push(sortedLeft.shift()); // consider alternative for better performance
     } else {
-      results.push(sortedRight.shift());
+      results.push(sortedRight.shift()); // consider alternative for better performance
     }
   }
 
