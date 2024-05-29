@@ -9,11 +9,30 @@
  
  */
 
+// function nestedAdd(array) {
+//   // base case: adding a number and not an array
+//   if (array[i] != number) return
+
+//   for (let i = 0; i < array.length; i++) {
+//     array[i] = array[i] + array[i - 1];
+//   }
+//   return nestedAdd(array[i], array[i + 1])
+// }
+
 function nestedAdd(array) {
-  // write code here
+  let sum = 0;
+  for (let i = 0; i < array.length; i++){
+    const current = array[i];
+    if (Array.isArray(current)) {
+      sum += nestedAdd(current)
+    } else {
+      sum += current;
+    }
+  }
+  return sum;
 }
 
-test.skip("nested arrays addition", () => {
+test("nested arrays addition", () => {
   expect(nestedAdd([1, 2, 3])).toEqual(6);
   expect(nestedAdd([1, [2], 3])).toEqual(6);
   expect(nestedAdd([[[[[[[[[5]]]]]]]]])).toEqual(5);
