@@ -9,8 +9,51 @@
 
 */
 
+// number: 1331, place: 0, longestNumber: 3
+function getDigit(number, place, longestNumber) {
+
+}
+
+function getLongestNumber(array) {
+  let i;
+
+  let max = array[0];
+
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] > max) {
+      max = array[i];
+    }
+  }
+
+  return max;
+}
+
 function radixSort(array) {
-  // code goes here
+  // find longest number
+  const longsetNum = getLongestNumber(array);
+
+  // create how many buckets you need
+for (let i = 0; i < longsetNum.length; i++) {
+  const buckets = longsetNum[i];
+  return buckets
+}
+  // an array of 10 arrays
+  for (bucket in buckets) {
+    new Array(bucket);
+  }
+
+  // for loop for how many interations you need
+  // while loop  
+  // enqueue the numbers into their buckets
+  while (buckets.length) {
+    buckets[i] = buckets[i].push(array[i]);
+  }
+
+  // for loop for each bucket
+  // dequeue all of the results
+  for (bucket in buckets) {
+    buckets[i].unshift(array[i])
+  }
 }
 
 // unit tests
