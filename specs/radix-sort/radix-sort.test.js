@@ -11,54 +11,79 @@
 
 // number: 1331, place: 0, longestNumber: 3
 function getDigit(number, place, longestNumber) {
+  const string = number.toString();
+  const size = string.length;
 
+  const mod = longestNumber - size;
+  return string[place - mod] || 0;
 }
 
 function getLongestNumber(array) {
-  let i;
+  let longest = 0;
 
-  let max = array[0];
+  for (let i = 0; i < array.length; i++) {
+    const currentLength = array[i].toString().length;
+    longest = currentLength > longest ? currentLength : longest;
+  }
 
-  for (let i = 1; i < array.length; i++) {
-    if (array[i] > max) {
-      max = array[i];
+  return longest;
+}
+
+// function radixSort(array) {
+//   // find longest number
+//   const longsetNum = getLongestNumber(array);
+
+//   // create how many buckets you need
+// for (let i = 0; i < longsetNum.length; i++) {
+//   const buckets = longsetNum[i];
+//   return buckets
+// }
+//   // an array of 10 arrays
+//   for (bucket in buckets) {
+//     new Array(bucket);
+//   }
+
+//   // for loop for how many interations you need
+//   // while loop  
+//   // enqueue the numbers into their buckets
+//   while (buckets.length) {
+//     buckets[i] = buckets[i].push(array[i]);
+//   }
+
+//   // for loop for each bucket
+//   // dequeue all of the results
+//   for (bucket in buckets) {
+//     buckets[i].unshift(array[i])
+//   }
+// }
+
+function radixSort(array) {
+  // find the longest number
+  const longestNumber = getLongestNumber(array);
+
+  // create needed buckets  
+  // an array of 10 arrays
+  const buckets = new Array(10).fill().map(() => []);
+
+  for (let i = longestNumber - 1; i >= 0; i--) {
+    while (array.length) {
+      const current = array.shift()
+      buckets[getDigit(current, i, longestNumber)].push(current);
+    }
+
+    for (let j = 0; j < 10; j++) {
+      while (buckets[j].length) {
+        array.push(buckets[j].shift());
+      }
     }
   }
 
-  return max;
-}
-
-function radixSort(array) {
-  // find longest number
-  const longsetNum = getLongestNumber(array);
-
-  // create how many buckets you need
-for (let i = 0; i < longsetNum.length; i++) {
-  const buckets = longsetNum[i];
-  return buckets
-}
-  // an array of 10 arrays
-  for (bucket in buckets) {
-    new Array(bucket);
-  }
-
-  // for loop for how many interations you need
-  // while loop  
-  // enqueue the numbers into their buckets
-  while (buckets.length) {
-    buckets[i] = buckets[i].push(array[i]);
-  }
-
-  // for loop for each bucket
-  // dequeue all of the results
-  for (bucket in buckets) {
-    buckets[i].unshift(array[i])
-  }
+  return array;
 }
 
 // unit tests
 // do not modify the below code
-describe.skip("radix sort", function () {
+describe("radix sort", function () {
   it("should sort correctly", () => {
     const nums = [
       20,
