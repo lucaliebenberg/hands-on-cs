@@ -47,6 +47,9 @@ function quickSort(nums) {
   }
 
   const pivot = nums[nums.length - 1];
+  // or
+  // const pivot = nums.pop();
+  // then can use ' for x in nums ' ( as pivot will not be included in nums )
 
   const left = [];
   const right = [];
@@ -59,11 +62,11 @@ function quickSort(nums) {
     }
   }
 
-  const sortedLeft = quickSort(left);
-  const sortedRight = quickSort(right);
+  const sortedLeft = quickSort(left); // these are pointers
+  const sortedRight = quickSort(right); // these are pointers
 
   return sortedLeft.concat(pivot, sortedRight);
-  // return [...quickSort(left), pivot, ...quickSort(right)]
+  // return [...quickSort(left), pivot, ...quickSort(right)] // could do this for a 1 liner
 }
 
 // unit tests
