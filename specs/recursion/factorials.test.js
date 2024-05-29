@@ -10,7 +10,23 @@
   factorial(3) = 6 
 */
 
-function factorial(n) {}
+// function factorial(n) {
+//   let sum = 0;
+//   for (let i = 0; i < n.length; i++) {
+//     const current = n[i]
+//     if (current === 1) {
+//       return
+//     } else {
+//       sum += (current - 1) * current;
+//     }
+//   }
+//   return sum;
+// }
+
+function factorial(n) {
+  if (n < 2) return 1;
+  return n * factorial(n - 1);
+}
 
 // unit tests
 // do not modify the below code
