@@ -7,25 +7,47 @@ function linearSearch(id, array) {
   // code goes here
 }
 
-function binarySearch(id, array) {
-  // get the middle
-  const middle = Math.floor(array.length / 2);
+// function binarySearch(id, array) {
+//   // get the middle
+//   const middle = Math.floor(array.length / 2);
 
-  // split into two arrays
-  const leftArr = array.slice(0, middle);
-  const rightArr = array.slice(middle);
+//   // split into two arrays
+//   const leftArr = array.slice(0, middle);
+//   const rightArr = array.slice(middle);
 
-  // check which array is relevant for the id
-  // get the middle of that array
-  // check where the element is compared to the array[middleIndex]
-  if (id >= middle){
+//   // check which array is relevant for the id
+//   // get the middle of that array
+//   // check where the element is compared to the array[middleIndex]
+//   if (id >= middle){
 
-    // split the next array, and get the middle
-    leftArrIndex = Math.floor(leftArr.length / 2);
-  } else {
-    rightArrIndex = Math.floor(rightArr.length / 2);
+//     // split the next array, and get the middle
+//     leftArrIndex = Math.floor(leftArr.length / 2);
+//   } else {
+//     rightArrIndex = Math.floor(rightArr.length / 2);
+//   }
+//   // return the final array?
+// }
+
+function binarySearch(id, array){
+  let min = 0;
+  let max = array.length - 1;
+  let index;
+  let element;
+
+  while (min <= max) {
+    index = Math.floor((min + max) / 2);
+    element = array[index];
+
+    if (element.id < id) {
+      min = index + 1;
+    } else if (element.id > id) {
+      min = index -1;
+    } else {
+      return element;
+    }
   }
-  // return the final array?
+
+  return void 0;
 }
 
 // unit tests
