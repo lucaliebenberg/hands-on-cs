@@ -63,7 +63,7 @@ class LinkedList {
         this.head = head.next;
       } else {
         this.head = null;
-        this.tail = null;
+        this.tail = null; // test passes if not here, is a bug
       }
       this.length--;
       return head.value;
