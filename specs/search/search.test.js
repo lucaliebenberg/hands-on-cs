@@ -8,7 +8,24 @@ function linearSearch(id, array) {
 }
 
 function binarySearch(id, array) {
-  // code goes here
+  // get the middle
+  const middle = Math.floor(array.length / 2);
+
+  // split into two arrays
+  const leftArr = array.slice(0, middle);
+  const rightArr = array.slice(middle);
+
+  // check which array is relevant for the id
+  // get the middle of that array
+  // check where the element is compared to the array[middleIndex]
+  if (id >= middle){
+
+    // split the next array, and get the middle
+    leftArrIndex = Math.floor(leftArr.length / 2);
+  } else {
+    rightArrIndex = Math.floor(rightArr.length / 2);
+  }
+  // return the final array?
 }
 
 // unit tests
