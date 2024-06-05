@@ -53,7 +53,7 @@ class LinkedList {
   }
   get(index) {
     const node = this._find(index);
-    if (!node) return void 0;
+    if (!node) return void 0; // out of bounds
     return node.value;
   }
   delete(index) {
