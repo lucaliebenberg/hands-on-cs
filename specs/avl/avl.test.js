@@ -22,11 +22,54 @@
 */
 
 class Tree {
-  // code goes here
+  constructor() {
+    this.root = null;
+  }
+  add(value) {
+    if (!this.root) {
+      this.root = new Node(value);
+    } else {
+      this.root.add(value);
+    }
+  }
 }
 
 class Node {
   // code also goes here
+  constructor(value) {
+    this.left = null;
+    this.right = null;
+    this.value = value;
+    this.height = 1;
+  }
+  add(value) {
+    // decide to go left or right
+
+    // find the correct place to add
+    // make sure you're updating heights
+
+    this.balance();
+  }
+  balance() {
+    // ask is this node out of balance
+    // if not out of balance, do nothing
+
+    // if it is, do I need to single or double rotate
+    // if single, just call rotate on self
+    // if double, call rotate on child and then self
+  }
+  rotateRR() {
+    // rotate
+    this.right.updateNewLocation()
+  }
+  rotateLL() {
+      // rotate
+      this.left.updateNewLocation()
+      this.updateNewLocation();
+  }
+  updateNewLocation() {
+    // calculate the new height
+  }
 }
 
 // unit tests
